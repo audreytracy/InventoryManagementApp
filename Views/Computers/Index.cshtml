@@ -12,6 +12,24 @@
 
 <form asp-controller="Computers" asp-action="Index">
     <p>
+        Installation Date: From <input type="date" name="searchInstallationDateBeginning" />
+        
+        To <input type="date" name="searchInstallationDateEnding" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<form asp-controller="Computers" asp-action="Index">
+    <p>
+        Price Range: From <input type="text" name="searchPriceBeginning" />
+
+        To <input type="text" name="searchPriceEnding" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<form asp-controller="Computers" asp-action="Index">
+    <p>
         Room Number: <input type="number" name="searchRoomNumber" />
         <input type="submit" value="Filter" />
     </p>
