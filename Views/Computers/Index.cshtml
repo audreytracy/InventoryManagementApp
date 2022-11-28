@@ -10,18 +10,14 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-<form asp-controller="Computers" asp-action="Index">
+<form asp-controller="Computers" asp-action="Index" method="get">
     <p>
-        Room Number: <input type="number" name="searchRoomNumber" />
+        Room Number: <input type="text" name="searchRoomNumber" />
         <input type="submit" value="Filter" />
     </p>
-</form>
-
-
-<form asp-controller="Computers" asp-action="Index">
     <p>
         Serial Number: <input type="text" name="searchString" />
-        <input type="submit" value="Search" />
+        <input type="submit" value="Filter" />
     </p>
 </form>
 
