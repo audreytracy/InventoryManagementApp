@@ -12,6 +12,14 @@
 
 <form asp-controller="Computers" asp-action="Index">
     <p>
+        Room Number: <input type="number" name="searchRoomNumber" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+
+<form asp-controller="Computers" asp-action="Index">
+    <p>
         Serial Number: <input type="text" name="searchString" />
         <input type="submit" value="Search" />
     </p>

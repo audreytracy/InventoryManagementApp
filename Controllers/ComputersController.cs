@@ -20,7 +20,7 @@ namespace InventoryManagementApp.Controllers
         }
 
         // GET: Computers
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, string searchRoomNum)
         {
             var computers = from m in _context.Computer
                          select m;
@@ -29,10 +29,31 @@ namespace InventoryManagementApp.Controllers
             {
                 computers = computers.Where(s => s.ManufacturerSerialNumber.ToString()!.Contains(searchString));
             }
+            if (!String.IsNullOrEmpty(searchRoomNum))
+            {
+                computers = computers.Where(s=> s.OfficeRoomNumber.ToString() == searchRoomNum);
+
+            }
 
             return View(await computers.ToListAsync());
 
         }
+        /*
+         * public async Task<IActionResult> Index(string searchString)
+{
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        movies = movies.Where(s => s.Title!.Contains(searchString));
+    }
+
+    return View(await movies.ToListAsync());
+}
+
+         */
+
 
         // GET: Computers/Details/5
         public async Task<IActionResult> Details(int? id)
