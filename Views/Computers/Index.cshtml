@@ -35,7 +35,7 @@
     </p>
 </form>
 
-<table class="table" style="border-color: white; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-width: 1px; background-color: lightslategray">
+<table class="table text-light" style="border-color: white; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-width: 1px; background-color: lightslategray">
     <thead>
         <tr>
             <th>
@@ -94,9 +94,9 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="text-light">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="text-light">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="text-light">Delete</a>
                 </td>
             </tr>
         }
