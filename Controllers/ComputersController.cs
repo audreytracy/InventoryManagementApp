@@ -20,19 +20,38 @@ namespace InventoryManagementApp.Controllers
         }
 
         // GET: Computers
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, string searchRoomNum)
         {
-            var computers = from m in _context.Computer
-                         select m;
+            IQueryable<string> roomNumQuery = from c in _context.Computer
+                                              orderby c.OfficeRoomNumber
+                                              select c.OfficeRoomNumber;
+
+            var computers = from c in _context.Computer
+                         select c;
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 computers = computers.Where(s => s.ManufacturerSerialNumber.ToString()!.Contains(searchString));
             }
+            if (!String.IsNullOrEmpty(searchRoomNum))
+            {
+                computers = computers.Where(s=> s.OfficeRoomNumber.ToString()!.Contains(searchRoomNum));
+
+            }
+
+            var roomNumVM = new RoomNumViewModel
+            {
+                RoomNums = new SelectList(await roomNumQuery.Distinct().ToListAsync()),
+                Computers = await computers.ToListAsync()
+            };
+
+            //return View(roomNumVM);
+
 
             return View(await computers.ToListAsync());
 
         }
+
 
         // GET: Computers/Details/5
         public async Task<IActionResult> Details(int? id)

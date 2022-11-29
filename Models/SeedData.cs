@@ -37,91 +37,91 @@ namespace InventoryManagementApp.Models
                     new Computer
                     {
                         ManufacturerSerialNumber = 113456,
-                        OfficeRoomNumber = "120",
+                        OfficeRoomNumber = "121",
                         OfficeLocation = "QBB",
                         ComputerSpecification = "Desktop",
                         OperatingSystem = "macOS",
                         OwnerName = "Bob Johnson",
-                        InstallationDate = DateTime.Parse("2015-3-13"),
+                        InstallationDate = DateTime.Parse("2016-3-13"),
                         Price = 400M
                     },
 
                     new Computer
                     {
                         ManufacturerSerialNumber = 111456,
-                        OfficeRoomNumber = "120",
+                        OfficeRoomNumber = "121",
                         OfficeLocation = "QBB",
                         ComputerSpecification = "Desktop",
                         OperatingSystem = "macOS",
                         OwnerName = "Bob Johnson",
-                        InstallationDate = DateTime.Parse("2015-3-13"),
+                        InstallationDate = DateTime.Parse("2016-3-13"),
                         Price = 400M
                     },
 
                     new Computer
                     {
                         ManufacturerSerialNumber = 111156,
-                        OfficeRoomNumber = "120",
+                        OfficeRoomNumber = "121",
                         OfficeLocation = "QBB",
                         ComputerSpecification = "Desktop",
                         OperatingSystem = "macOS",
-                        OwnerName = "Bob Johnson",
-                        InstallationDate = DateTime.Parse("2015-3-13"),
+                        OwnerName = "Quincy Fiddlesworth",
+                        InstallationDate = DateTime.Parse("2016-3-13"),
                         Price = 400M
                     },
                     new Computer
                     {
                         ManufacturerSerialNumber = 111116,
-                        OfficeRoomNumber = "120",
+                        OfficeRoomNumber = "123",
                         OfficeLocation = "QBB",
-                        ComputerSpecification = "Desktop",
-                        OperatingSystem = "macOS",
-                        OwnerName = "Bob Johnson",
-                        InstallationDate = DateTime.Parse("2015-3-13"),
+                        ComputerSpecification = "La",
+                        OperatingSystem = "Linux",
+                        OwnerName = "George W. Bush",
+                        InstallationDate = DateTime.Parse("2016-3-13"),
                         Price = 400M
                     },
                     new Computer
                     {
                         ManufacturerSerialNumber = 111111,
-                        OfficeRoomNumber = "120",
+                        OfficeRoomNumber = "123",
                         OfficeLocation = "QBB",
                         ComputerSpecification = "Desktop",
                         OperatingSystem = "macOS",
-                        OwnerName = "Bob Johnson",
-                        InstallationDate = DateTime.Parse("2015-3-13"),
+                        OwnerName = "Trisha Peytas",
+                        InstallationDate = DateTime.Parse("2010-3-13"),
                         Price = 400M
                     },
                     new Computer
                     {
                         ManufacturerSerialNumber = 122222,
-                        OfficeRoomNumber = "120",
+                        OfficeRoomNumber = "123",
                         OfficeLocation = "QBB",
                         ComputerSpecification = "Desktop",
-                        OperatingSystem = "macOS",
-                        OwnerName = "Bob Johnson",
-                        InstallationDate = DateTime.Parse("2015-3-13"),
+                        OperatingSystem = "Windows",
+                        OwnerName = "Gertrude Francin",
+                        InstallationDate = DateTime.Parse("2010-3-13"),
                         Price = 400M
                     },
                     new Computer
                     {
                         ManufacturerSerialNumber = 122226,
-                        OfficeRoomNumber = "120",
-                        OfficeLocation = "QBB",
+                        OfficeRoomNumber = "123",
+                        OfficeLocation = "Sugihara Hall",
                         ComputerSpecification = "Desktop",
-                        OperatingSystem = "macOS",
-                        OwnerName = "Bob Johnson",
-                        InstallationDate = DateTime.Parse("2015-3-13"),
+                        OperatingSystem = "Unix",
+                        OwnerName = "Shaniqua Sugihara",
+                        InstallationDate = DateTime.Parse("2010-3-13"),
                         Price = 400M
                     },
                     new Computer
                     {
                         ManufacturerSerialNumber = 122256,
-                        OfficeRoomNumber = "120",
+                        OfficeRoomNumber = "124",
                         OfficeLocation = "QBB",
                         ComputerSpecification = "Desktop",
-                        OperatingSystem = "macOS",
-                        OwnerName = "Bob Johnson",
-                        InstallationDate = DateTime.Parse("2015-3-13"),
+                        OperatingSystem = "Windows",
+                        OwnerName = "Phillipe O'Malley",
+                        InstallationDate = DateTime.Parse("2010-3-13"),
                         Price = 400M
                     }
                 );

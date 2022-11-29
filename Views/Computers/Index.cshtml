@@ -1,23 +1,42 @@
-﻿@model IEnumerable<InventoryManagementApp.Models.Computer>
-
+﻿@model IEnumerable<InventoryManagementApp.Models.RoomNumViewModel>
 @{
     ViewData["Title"] = "Index";
 }
-
 <h1>Index</h1>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
-<form asp-controller="Computers" asp-action="Index">
+<form asp-controller="Computers" asp-action="Index" method="get">
     <p>
-        Serial Number: <input type="text" name="searchString" />
-        <input type="submit" value="Search" />
+        <select asp-for="ComputerRoom" asp-items="Model.RoomNums">
+            <option value="">All</option>
+        </select>
+
+    </p>
+</form>
+<form asp-controller="Computers" asp-action="Index" method="get">
+    <p>
+        Installation Date: From <input type="date" name="searchInstallationDateBeginning" />
+        To <input type="date" name="searchInstallationDateEnding" />
+        <input type="submit" value="Filter"/>
+    </p>
+</form>
+
+<form asp-controller="Computers" asp-action="Index" method="get">
+    <p>
+        Price Range: From <input type="text" name="searchPriceBeginning" />
+        To <input type="text" name="searchPriceEnding" />
+        <input type="submit" value="Filter"/>
     </p>
 </form>
 
 
+<form asp-controller="Computers" asp-action="Index" method="get">
+    <p>
+        Serial Number: <input type="text" name="searchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -49,38 +68,39 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ManufacturerSerialNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OfficeRoomNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OfficeLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ComputerSpecification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OperatingSystem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstallationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManufacturerSerialNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfficeRoomNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfficeLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComputerSpecification)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OperatingSystem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstallationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
