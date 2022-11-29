@@ -1,10 +1,10 @@
 ﻿@model InventoryManagementApp.Models.RoomNumViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Computer Index";
 }
-<h1>Index</h1>
+<h1>Computer Index</h1>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Computer Entry</a>
 </p>
 
 <form asp-controller="Computers" asp-action="Index" method="get">
@@ -35,7 +35,7 @@
     </p>
 </form>
 
-<table class="table">
+<table class="table" style="border-color: white; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-width: 1px; background-color: lightslategray">
     <thead>
         <tr>
             <th>
