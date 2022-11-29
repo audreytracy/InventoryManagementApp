@@ -1,4 +1,4 @@
-﻿@model IEnumerable<InventoryManagementApp.Models.Computer>
+﻿@model InventoryManagementApp.Models.RoomNumViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,25 +9,28 @@
 
 <form asp-controller="Computers" asp-action="Index" method="get">
     <p>
+        <!-- search by room number -->
+        Room Number: <select asp-for="ComputerRoomNumber" asp-items="Model.RoomNums">
+            <option value="">All</option>
+        </select>
+    </p>
+    <p>
         <!-- search by installation date -->
         Installation Date: From <input type="date" name="searchInstallationDateBeginning"/>
         To <input type="date" name="searchInstallationDateEnding"/>
-        <input type="submit" value="Filter"/>
     </p>
     <p>
         <!-- search by price range -->
-        Price Range: From <input type="text" name="searchPriceBeginning"/>
-        To <input type="text" name="searchPriceEnding"/>
-        <input type="submit" value="Filter" />
+        Price Range: From <input type="text" name="searchPriceBeginning" />
+        To <input type="text" name="searchPriceEnding" />
     </p>
     <p>
         <!-- search by serial number -->
-        Serial Number: <input type="text" name="searchString"/>
-        <input type="submit" value="Filter"/>
+        Serial Number: <input type="text" name="SearchString" />
+        
     </p>
     <p>
-        <!-- search by room number -->
-        Room Number: <input type="text" name="searchRoomNumber" />
+        <!-- filter button -->
         <input type="submit" value="Filter" />
     </p>
 </form>
@@ -36,34 +39,34 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ManufacturerSerialNumber)
+                @Html.DisplayNameFor(model => model.Computers[0].ManufacturerSerialNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OfficeRoomNumber)
+                @Html.DisplayNameFor(model => model.Computers[0].OfficeRoomNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OfficeLocation)
+                @Html.DisplayNameFor(model => model.Computers[0].OfficeLocation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ComputerSpecification)
+                @Html.DisplayNameFor(model => model.Computers[0].ComputerSpecification)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OperatingSystem)
+                @Html.DisplayNameFor(model => model.Computers[0].OperatingSystem)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OwnerName)
+                @Html.DisplayNameFor(model => model.Computers[0].OwnerName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InstallationDate)
+                @Html.DisplayNameFor(model => model.Computers[0].InstallationDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Computers[0].Price)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Computers)
         {
             <tr>
                 <td>

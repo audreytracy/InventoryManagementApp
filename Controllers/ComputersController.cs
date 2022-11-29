@@ -28,8 +28,13 @@ namespace InventoryManagementApp.Controllers
 
         // GET: Computers
         [HttpGet]
-        public async Task<IActionResult> Index(string searchInstallationDateBeginning, string searchInstallationDateEnding, string searchRoomNumber, string searchString, string searchPriceBeginning, string searchPriceEnding)
+        public async Task<IActionResult> Index(string searchInstallationDateBeginning, string searchInstallationDateEnding, string computerRoomNumber, string searchString, string searchPriceBeginning, string searchPriceEnding)
         {
+            // Use LINQ to get list of genres.
+            IQueryable<string> roomNumQuery = from c in _context.Computer
+                                            orderby c.OfficeRoomNumber
+                                            select c.OfficeRoomNumber;
+
             var computers = from m in _context.Computer
                             select m;
             // search by installation date
@@ -42,9 +47,16 @@ namespace InventoryManagementApp.Controllers
             if (!String.IsNullOrEmpty(searchString))
                 computers = computers.Where(s => s.ManufacturerSerialNumber.ToString()!.Contains(searchString));
             //search by room number
-            if (!String.IsNullOrEmpty(searchRoomNumber))
-                computers = computers.Where(s => s.OfficeRoomNumber == searchRoomNumber);
-            return View(await computers.ToListAsync());
+            if (!String.IsNullOrEmpty(computerRoomNumber))
+                computers = computers.Where(x => x.OfficeRoomNumber == computerRoomNumber);
+
+            var roomNumVM = new RoomNumViewModel
+            {
+                RoomNums = new SelectList(await roomNumQuery.Distinct().ToListAsync()),
+                Computers = await computers.ToListAsync()
+            };
+
+            return View(roomNumVM);
 
         }
 
