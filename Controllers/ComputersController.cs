@@ -28,24 +28,27 @@ namespace InventoryManagementApp.Controllers
 
         // GET: Computers
         [HttpGet]
-        public async Task<IActionResult> Index(string searchInstallationDateBeginning, string searchInstallationDateEnding, string computerRoomNumber, string searchString, string searchPriceBeginning, string searchPriceEnding)
+        public async Task<IActionResult> Index(string searchInstallationDateBeginning, string searchInstallationDateEnding, string computerRoomNumber, string searchSerialNumber, string searchPriceBeginning, string searchPriceEnding)
         {
+
             // Use LINQ to get list of genres.
             IQueryable<string> roomNumQuery = from c in _context.Computer
                                             orderby c.OfficeRoomNumber
                                             select c.OfficeRoomNumber;
+
 
             var computers = from m in _context.Computer
                             select m;
             // search by installation date
             if (!String.IsNullOrEmpty(searchInstallationDateBeginning) && !String.IsNullOrEmpty(searchInstallationDateEnding))
                 computers = computers.Where(s => s.InstallationDate! >= DateTime.Parse(searchInstallationDateBeginning) && s.InstallationDate! <= DateTime.Parse(searchInstallationDateEnding));
-            // search by price
+            // search by price (does nothing if text inputs not valid prices)
             if (!String.IsNullOrEmpty(searchPriceBeginning) && !String.IsNullOrEmpty(searchPriceEnding))
-                computers = computers.Where(s => s.Price! >= Decimal.Parse(searchPriceBeginning) && s.Price! <= Decimal.Parse(searchPriceEnding));
+                if (decimal.TryParse(searchPriceBeginning, out decimal priceBeg) && decimal.TryParse(searchPriceEnding, out decimal priceEnd))
+                    computers = computers.Where(s => s.Price! >= priceBeg && s.Price! <= priceEnd);
             // search by serial number
-            if (!String.IsNullOrEmpty(searchString))
-                computers = computers.Where(s => s.ManufacturerSerialNumber.ToString()!.Contains(searchString));
+            if (!String.IsNullOrEmpty(searchSerialNumber))
+                computers = computers.Where(s => s.ManufacturerSerialNumber.ToString()!.Contains(searchSerialNumber));
             //search by room number
             if (!String.IsNullOrEmpty(computerRoomNumber))
                 computers = computers.Where(x => x.OfficeRoomNumber == computerRoomNumber);
