@@ -19,39 +19,34 @@ namespace InventoryManagementApp.Controllers
             _context = context;
         }
 
-        // GET: Computers
-        public async Task<IActionResult> Index(string searchString, string searchRoomNum)
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
         {
-            IQueryable<string> roomNumQuery = from c in _context.Computer
-                                              orderby c.OfficeRoomNumber
-                                              select c.OfficeRoomNumber;
+            return "From [HttpPost]Index: filter on " + searchString;
+        }
 
-            var computers = from c in _context.Computer
-                         select c;
 
+        // GET: Computers
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchInstallationDateBeginning, string searchInstallationDateEnding, string searchRoomNumber, string searchString, string searchPriceBeginning, string searchPriceEnding)
+        {
+            var computers = from m in _context.Computer
+                            select m;
+            // search by installation date
+            if (!String.IsNullOrEmpty(searchInstallationDateBeginning) && !String.IsNullOrEmpty(searchInstallationDateEnding))
+                computers = computers.Where(s => s.InstallationDate! >= DateTime.Parse(searchInstallationDateBeginning) && s.InstallationDate! <= DateTime.Parse(searchInstallationDateEnding));
+            // search by price
+            if (!String.IsNullOrEmpty(searchPriceBeginning) && !String.IsNullOrEmpty(searchPriceEnding))
+                computers = computers.Where(s => s.Price! >= Decimal.Parse(searchPriceBeginning) && s.Price! <= Decimal.Parse(searchPriceEnding));
+            // search by serial number
             if (!String.IsNullOrEmpty(searchString))
-            {
                 computers = computers.Where(s => s.ManufacturerSerialNumber.ToString()!.Contains(searchString));
-            }
-            if (!String.IsNullOrEmpty(searchRoomNum))
-            {
-                computers = computers.Where(s=> s.OfficeRoomNumber.ToString()!.Contains(searchRoomNum));
-
-            }
-
-            var roomNumVM = new RoomNumViewModel
-            {
-                RoomNums = new SelectList(await roomNumQuery.Distinct().ToListAsync()),
-                Computers = await computers.ToListAsync()
-            };
-
-            //return View(roomNumVM);
-
-
+            //search by room number
+            if (!String.IsNullOrEmpty(searchRoomNumber))
+                computers = computers.Where(s => s.OfficeRoomNumber == searchRoomNumber);
             return View(await computers.ToListAsync());
 
         }
-
 
         // GET: Computers/Details/5
         public async Task<IActionResult> Details(int? id)

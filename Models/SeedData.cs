@@ -31,7 +31,7 @@ namespace InventoryManagementApp.Models
                         OperatingSystem = "macOS",
                         OwnerName = "Bob Johnson",
                         InstallationDate = DateTime.Parse("2015-3-13"),
-                        Price = 400M
+                        Price = 500M
                     },
 
                     new Computer
@@ -51,11 +51,11 @@ namespace InventoryManagementApp.Models
                         ManufacturerSerialNumber = 111456,
                         OfficeRoomNumber = "121",
                         OfficeLocation = "QBB",
-                        ComputerSpecification = "Desktop",
+                        ComputerSpecification = "Tablet",
                         OperatingSystem = "macOS",
                         OwnerName = "Bob Johnson",
                         InstallationDate = DateTime.Parse("2016-3-13"),
-                        Price = 400M
+                        Price = 100M
                     },
 
                     new Computer
@@ -67,18 +67,18 @@ namespace InventoryManagementApp.Models
                         OperatingSystem = "macOS",
                         OwnerName = "Quincy Fiddlesworth",
                         InstallationDate = DateTime.Parse("2016-3-13"),
-                        Price = 400M
+                        Price = 700M
                     },
                     new Computer
                     {
                         ManufacturerSerialNumber = 111116,
                         OfficeRoomNumber = "123",
                         OfficeLocation = "QBB",
-                        ComputerSpecification = "La",
+                        ComputerSpecification = "Laptop",
                         OperatingSystem = "Linux",
                         OwnerName = "George W. Bush",
                         InstallationDate = DateTime.Parse("2016-3-13"),
-                        Price = 400M
+                        Price = 230M
                     },
                     new Computer
                     {
@@ -89,7 +89,7 @@ namespace InventoryManagementApp.Models
                         OperatingSystem = "macOS",
                         OwnerName = "Trisha Peytas",
                         InstallationDate = DateTime.Parse("2010-3-13"),
-                        Price = 400M
+                        Price = 450M
                     },
                     new Computer
                     {
@@ -111,7 +111,7 @@ namespace InventoryManagementApp.Models
                         OperatingSystem = "Unix",
                         OwnerName = "Shaniqua Sugihara",
                         InstallationDate = DateTime.Parse("2010-3-13"),
-                        Price = 400M
+                        Price = 450M
                     },
                     new Computer
                     {
@@ -124,7 +124,7 @@ namespace InventoryManagementApp.Models
                         InstallationDate = DateTime.Parse("2010-3-13"),
                         Price = 400M
                     }
-                );
+                ); ;
                 context.SaveChanges();
             }
         }
