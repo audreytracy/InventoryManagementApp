@@ -1,4 +1,4 @@
-﻿@model IEnumerable<InventoryManagementApp.Models.Computer>
+﻿@model IEnumerable<InventoryManagementApp.Models.RoomNumViewModel>
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,35 +6,35 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-controller="Computers" asp-action="Index" method="get">
+    <p>
+        <select asp-for="ComputerRoom" asp-items="Model.RoomNums">
+            <option value="">All</option>
+        </select>
 
-<form asp-controller="Computers" asp-action="Index">
+    </p>
+</form>
+<form asp-controller="Computers" asp-action="Index" method="get">
     <p>
         Installation Date: From <input type="date" name="searchInstallationDateBeginning" />
-
         To <input type="date" name="searchInstallationDateEnding" />
-        <input type="submit" value="Filter" />
+        <input type="submit" value="Filter"/>
     </p>
 </form>
 
-<form asp-controller="Computers" asp-action="Index">
+<form asp-controller="Computers" asp-action="Index" method="get">
     <p>
         Price Range: From <input type="text" name="searchPriceBeginning" />
-
         To <input type="text" name="searchPriceEnding" />
-        <input type="submit" value="Filter" />
+        <input type="submit" value="Filter"/>
     </p>
 </form>
 
-<form asp-controller="Computers" asp-action="Index">
-    <p>
-        Room Number: <input type="number" name="searchRoomNumber" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
-<form asp-controller="Computers" asp-action="Index">
+
+<form asp-controller="Computers" asp-action="Index" method="get">
     <p>
         Serial Number: <input type="text" name="searchString" />
-        <input type="submit" value="Search" />
+        <input type="submit" value="Filter" />
     </p>
 </form>
 <table class="table">
