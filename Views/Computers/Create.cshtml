@@ -1,0 +1,68 @@
+﻿@model InventoryManagementApp.Models.Computer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Computer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ManufacturerSerialNumber" class="control-label"></label>
+                <input asp-for="ManufacturerSerialNumber" class="form-control" />
+                <span asp-validation-for="ManufacturerSerialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfficeRoomNumber" class="control-label"></label>
+                <input asp-for="OfficeRoomNumber" class="form-control" />
+                <span asp-validation-for="OfficeRoomNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfficeLocation" class="control-label"></label>
+                <input asp-for="OfficeLocation" class="form-control" />
+                <span asp-validation-for="OfficeLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComputerSpecification" class="control-label"></label>
+                <input asp-for="ComputerSpecification" class="form-control" />
+                <span asp-validation-for="ComputerSpecification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OperatingSystem" class="control-label"></label>
+                <input asp-for="OperatingSystem" class="form-control" />
+                <span asp-validation-for="OperatingSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OwnerName" class="control-label"></label>
+                <input asp-for="OwnerName" class="form-control" />
+                <span asp-validation-for="OwnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstallationDate" class="control-label"></label>
+                <input asp-for="InstallationDate" class="form-control" />
+                <span asp-validation-for="InstallationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
