@@ -1,68 +1,72 @@
-﻿@model IEnumerable<InventoryManagementApp.Models.Computer>
+@model InventoryManagementApp.Models.RoomNumViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Computer Index";
 }
-<h1>Index</h1>
+<h1>Computer Index</h1>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Computer Entry</a>
 </p>
+
 <form asp-controller="Computers" asp-action="Index" method="get">
     <p>
+        <!-- search by room number -->
+        Room Number: <select asp-for="ComputerRoomNumber" asp-items="Model.RoomNums">
+            <option value="">All</option>
+        </select>
+    </p>
+    <p>
         <!-- search by installation date -->
-        Installation Date: From <input type="date" name="searchInstallationDateBeginning" />
-        To <input type="date" name="searchInstallationDateEnding" />
-        <input type="submit" value="Filter" />
+        Installation Date: From <input type="date" name="searchInstallationDateBeginning"/>
+        To <input type="date" name="SearchInstallationDateEnding"/>
     </p>
     <p>
         <!-- search by price range -->
         Price Range: From <input type="text" name="searchPriceBeginning" />
-        To <input type="text" name="searchPriceEnding" />
-        <input type="submit" value="Filter" />
+        To <input type="text" name="SearchPriceEnding" />
     </p>
     <p>
         <!-- search by serial number -->
-        Serial Number: <input type="text" name="searchString" />
-        <input type="submit" value="Filter" />
+        Serial Number: <input type="number" name="SearchSerialNumber" />
+        
     </p>
     <p>
-        <!-- search by room number -->
-        Room Number: <input type="text" name="searchRoomNumber" />
+        <!-- filter button -->
         <input type="submit" value="Filter" />
     </p>
 </form>
 
-<table class="table">
+<table class="table text-light" style="border-color: white; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-width: 1px; background-color: lightslategray">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ManufacturerSerialNumber)
+                @Html.DisplayNameFor(model => model.Computers[0].ManufacturerSerialNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OfficeRoomNumber)
+                @Html.DisplayNameFor(model => model.Computers[0].OfficeRoomNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OfficeLocation)
+                @Html.DisplayNameFor(model => model.Computers[0].OfficeLocation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ComputerSpecification)
+                @Html.DisplayNameFor(model => model.Computers[0].ComputerSpecification)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OperatingSystem)
+                @Html.DisplayNameFor(model => model.Computers[0].OperatingSystem)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OwnerName)
+                @Html.DisplayNameFor(model => model.Computers[0].OwnerName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InstallationDate)
+                @Html.DisplayNameFor(model => model.Computers[0].InstallationDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Computers[0].Price)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Computers)
         {
             <tr>
                 <td>
@@ -90,9 +94,9 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="text-light">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="text-light">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="text-light">Delete</a>
                 </td>
             </tr>
         }
