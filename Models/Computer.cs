@@ -14,6 +14,5 @@ namespace InventoryManagementApp.Models
         [DataType(DataType.Date)]
         public DateTime InstallationDate { get; set; }
         public decimal Price { get; set; }
-
     }
 }

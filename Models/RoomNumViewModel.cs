@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
 
 namespace InventoryManagementApp.Models
 {
@@ -9,6 +8,5 @@ namespace InventoryManagementApp.Models
         public SelectList? RoomNums { get; set; }
         public string? ComputerRoomNumber { get; set; }
         public string? SearchString { get; set; }
-
     }
 }

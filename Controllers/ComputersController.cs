@@ -28,20 +28,17 @@ namespace InventoryManagementApp.Controllers
 
         // GET: Computers
         [HttpGet]
-        public async Task<IActionResult> Index(string searchInstallationDateBeginning, string searchInstallationDateEnding, string computerRoomNumber, string searchSerialNumber, string searchPriceBeginning, string searchPriceEnding)
+        public async Task<IActionResult> Index(string searchInstallationDateBeginning, string searchInstallationDateEnding,
+            string computerRoomNumber, string searchSerialNumber, string searchPriceBeginning, string searchPriceEnding)
         {
-
             // Use LINQ to get list of genres.
-            IQueryable<string> roomNumQuery = from c in _context.Computer
-                                            orderby c.OfficeRoomNumber
-                                            select c.OfficeRoomNumber;
-
-
-            var computers = from m in _context.Computer
-                            select m;
+            IQueryable<string> roomNumQuery = from c in _context.Computer orderby c.OfficeRoomNumber select c.OfficeRoomNumber;
+            
+            var computers = from m in _context.Computer select m;
             // search by installation date
             if (!String.IsNullOrEmpty(searchInstallationDateBeginning) && !String.IsNullOrEmpty(searchInstallationDateEnding))
-                computers = computers.Where(s => s.InstallationDate! >= DateTime.Parse(searchInstallationDateBeginning) && s.InstallationDate! <= DateTime.Parse(searchInstallationDateEnding));
+                computers = computers.Where(s => s.InstallationDate! >= DateTime.Parse(searchInstallationDateBeginning) && 
+                s.InstallationDate! <= DateTime.Parse(searchInstallationDateEnding));
             // search by price (does nothing if text inputs not valid prices)
             if (!String.IsNullOrEmpty(searchPriceBeginning) && !String.IsNullOrEmpty(searchPriceEnding))
                 if (decimal.TryParse(searchPriceBeginning, out decimal priceBeg) && decimal.TryParse(searchPriceEnding, out decimal priceEnd))
@@ -53,8 +50,7 @@ namespace InventoryManagementApp.Controllers
             if (!String.IsNullOrEmpty(computerRoomNumber))
                 computers = computers.Where(x => x.OfficeRoomNumber == computerRoomNumber);
 
-            var roomNumVM = new RoomNumViewModel
-            {
+            var roomNumVM = new RoomNumViewModel {
                 RoomNums = new SelectList(await roomNumQuery.Distinct().ToListAsync()),
                 Computers = await computers.ToListAsync()
             };

@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using InventoryManagementApp.Data;
-using System;
-using System.Linq;
-
 
 namespace InventoryManagementApp.Models
 {
@@ -15,7 +11,7 @@ namespace InventoryManagementApp.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<InventoryManagementAppContext>>()))
             {
-                // Look for any movies.
+                // Look for any computers.
                 if (context.Computer.Any())
                 {
                     return;   // DB has been seeded
@@ -78,7 +74,7 @@ namespace InventoryManagementApp.Models
                         OperatingSystem = "Linux",
                         OwnerName = "George W. Bush",
                         InstallationDate = DateTime.Parse("2016-3-13"),
-                        Price = 230M
+                        Price = 230.50M
                     },
                     new Computer
                     {
